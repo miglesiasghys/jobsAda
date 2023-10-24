@@ -1,0 +1,58 @@
+.is-center{
+    justify-content: center;
+    align-items: center;
+}
+.card-job{
+    width: 35vh;
+    min-height: 65vh;
+    margin: 10px;
+}
+
+.navbar{
+    min-height: 12vh;
+    background-color: #f19ac0;
+}
+
+textarea{
+    min-height: 200px;
+    border-radius: 10px;
+}
+
+.image-details{
+    width: 250px;
+    margin: auto;
+}
+.figure-preview{
+    margin: auto;
+    margin-top: 30px;
+    width: 300px;
+    height: 400px;
+    background-color: gainsboro;
+    background-position: center;
+    background-size: cover;
+}
+/**/
+
+.loader {
+    width: 100px;
+    height: 38px;
+    display: inline-block;
+    background: linear-gradient(45deg, #9db451 25%, transparent 25%, transparent 75%, #9db451 75%, #9db451 100%), linear-gradient(45deg, #9db451 25%, #f591a9 25%, rgb(215, 160, 172) 75%, #9db451 75%, #9db451 100%);
+    font-size: 10px;
+    background-size: 32px 32px;
+    box-sizing: border-box;
+    animation: raceBoard 0.8s linear infinite;
+    background-position: 0 0, 16px 16px;
+    border-radius: 0;
+}
+
+
+@keyframes raceBoard {
+    0% {
+        background-position: 0 0, 16px 16px;
+    }
+
+    100% {
+        background-position: 32px 0px, 48px 16px;
+    }
+}
