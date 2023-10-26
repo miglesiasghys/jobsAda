@@ -62,32 +62,33 @@ const showDetails = ({ name, image, description, seniority, category, salary, lo
     showView("container-details")
     $('#container-card-details').innerHTML = `
     <div class= "columns ">
-    <div class="column">
-        <figure class="image-details">
-            <img src="${image}" alt="${name}">
-        </figure>
-    </div>
-    <div class="column is-8 card-description">
-        <h2 class= "title">${name}</h2>
-        <p class="mb-3">${description}</p>
-        <h3 class="m-2">Benefits:</h3>
+        <div class="column">
+            <figure class="image-details">
+                <img src="${image}" alt="${name}">
+            </figure>
+        </div>
+        <div class="column is-8 card-description">
+            <h2 class= "title">${name}</h2>
+            <p class="mb-3">${description}</p>
+            <h3 class="m-2">Benefits:</h3>
             <ul>
                 <li><i class="fa-solid fa-plus"></i> Vacations: ${benefits.vacation}</li>
                 <li><i class="fa-solid fa-plus mt-3"></i> Health job: ${benefits.health_ensurance}</li>
                 <li><i class="fa-solid fa-plus my-3"></i> Internet paid: ${benefits.internet_paid}</li>
             </ul>
-        <div class="my-3">
-            <span class="tag mx-2">${location}</span>
-            <span class="tag mx-2">${seniority}</span>
-            <span class="tag mx-2">${category}</span>
-            <span class="tag mx-2">$ ${salary}</span>
+            <div class="my-3">
+                <span class="tag mx-2">${location}</span>
+                <span class="tag mx-2">${seniority}</span>
+                <span class="tag mx-2">${category}</span>
+                <span class="tag mx-2">$ ${salary}</span>
+            </div>
+            <div class="is-flex is-mobile container-btn-details">
+                <button onclick= getJobsInfo(${id}) type="button" class="button is-rounded btn-details m-1" id="btn-edit-job">Edit job</button>
+                <button onclick= openModal() type="button is-rounded btn-color" class="button m-1 is-rounded btn-details" id="btn-delete-job">Delete job</button>
+                <button type="button" class="button is-rounded btn-color m-1" onclick= showView("list-jobs")>Back...</button>
+            </div>
         </div>
-        <div class="is-flex is-mobile container-btn-details">
-            <button onclick= getJobsInfo(${id}) type="button" class="button is-rounded btn-details m-1" id="btn-edit-job">Edit job</button>
-            <button onclick= openModal() type="button is-rounded btn-color" class="button m-1 is-rounded btn-details" id="btn-delete-job">Delete job</button>
-            <button type="button" class="button is-rounded btn-color m-1" onclick= showView("list-jobs")>Back...</button>
-        </div>
-    </div>
+    </div>    
     <div class="is-hidden" id="edit-job">
         <form class="form-create-job box columns is-multiline my-3" id="form-new-job">
             <div class="column is-8 my-3">
@@ -142,7 +143,7 @@ const showDetails = ({ name, image, description, seniority, category, salary, lo
                 <label for="languages" class="mt-3">Languages:</label>
                 <input id="languages-job-edit" type="text" class="input is-rounded mt-3" placeholder="Languages...">
             </div>
-            <button onclick= editJob(${id}) type="button" class="button is-rounded mt-5 mx-5 btn-details" id="btn-edit-job">Edit</button>
+            <button onclick= editJob(${id}) type="button" class="button is-rounded mt-5 mx-3 btn-details" id="btn-edit-job">Edit job</button>
         </form>
     </div>
     <div class="modal" id="modal-delete">
