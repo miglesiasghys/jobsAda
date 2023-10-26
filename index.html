@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,29 +8,35 @@
     <link rel="icon" href="img.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;900&family=Poppins&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;900&family=Poppins&display=swap"
+        rel="stylesheet">
     <script src="https://kit.fontawesome.com/f00683b7b2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="style/style.css">
 </head>
+
 <body>
     <!-- NAV BAR -->
     <header>
         <nav class="navbar is-mobile" role="navigation" aria-label="main navigation">
             <div class="navbar-brand is-flex is-center pt-3">
-                <img class="image is-96x96 mx-5" src="https://static.vecteezy.com/system/resources/thumbnails/017/417/259/small/organic-blob-shape-gradient-free-png.png"/>
+                <img class="image is-96x96 mx-5"
+                    src="https://static.vecteezy.com/system/resources/thumbnails/017/417/259/small/organic-blob-shape-gradient-free-png.png"
+                    alt="Ada Careers" />
                 <h1 class="title title-app mt-5">Ada Careers</h1>
-        
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                    data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </a>
             </div>
-        
+
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-end is-flex is-center">
-                    <button class="navbar-item button my-5 mx-4  btn-nav"type="button" id="btn-home">
+                    <button class="navbar-item button my-5 mx-4  btn-nav" type="button" id="btn-home">
                         Home
                     </button>
                     <button class="navbar-item button my-5 mr-5 btn-nav" type="button" id="btn-create-job">
@@ -55,7 +62,7 @@
                 <select class="category-select input is-rounded search-select" id="category-select">
                     <option value="" disabled selected>Category...</option>
                 </select>
-                <button type="button" class="button is-rounded mx-5 btn-color" id="btb-clean">Clean</button>
+                <button type="button" class="button is-rounded mx-5 btn-color" id="btb-clear">Clear</button>
             </form>
         </section>
         <div class="container is-flex is-flex-wrap-wrap is-center" id="container-cards"></div>
@@ -70,11 +77,16 @@
                 <label for="image">Image:</label>
                 <select id="img-select" class="input is-rounded my-3">
                     <option value="" disabled selected>Select a image...</option>
-                    <option value="https://i.pinimg.com/564x/f5/bf/af/f5bfaf73b060f82f840f495b5cacad6c.jpg">Option 1</option>
-                    <option value="https://i.pinimg.com/564x/68/56/aa/6856aadae3e4aed340f34224ae00a60b.jpg">Option 2</option>
-                    <option value="https://i.pinimg.com/564x/80/41/fa/8041fa1695cf9c53a3be90f2688957b1.jpg">Option 3</option>
-                    <option value="https://i.pinimg.com/564x/ca/70/15/ca70158ed58ce9085e1cbd54c73bd0e4.jpg">Option 4</option>
-                    <option value="https://i.pinimg.com/564x/d0/83/b4/d083b498830cfac3f5e5dbf7b7831da3.jpg">Option 5</option>
+                    <option value="https://i.pinimg.com/564x/f5/bf/af/f5bfaf73b060f82f840f495b5cacad6c.jpg">Option 1
+                    </option>
+                    <option value="https://i.pinimg.com/564x/68/56/aa/6856aadae3e4aed340f34224ae00a60b.jpg">Option 2
+                    </option>
+                    <option value="https://i.pinimg.com/564x/80/41/fa/8041fa1695cf9c53a3be90f2688957b1.jpg">Option 3
+                    </option>
+                    <option value="https://i.pinimg.com/564x/ca/70/15/ca70158ed58ce9085e1cbd54c73bd0e4.jpg">Option 4
+                    </option>
+                    <option value="https://i.pinimg.com/564x/d0/83/b4/d083b498830cfac3f5e5dbf7b7831da3.jpg">Option 5
+                    </option>
                 </select>
                 <label for="description">Description:</label>
                 <textarea id="description-job" type="text" class="input my-3" placeholder="Description..."></textarea>
@@ -113,15 +125,16 @@
                     <option value="false">No</option>
                 </select>
             </div>
-            
+
             <div class="column is-12">
                 <label for="languages" class="mt-3">Languages:</label>
-                <input id="languages-job" type="text" class="input is-rounded mt-3" placeholder="Exaple: React, HTML5, CSS3...">
+                <input id="languages-job" type="text" class="input is-rounded mt-3"
+                    placeholder="Exaple: React, HTML5, CSS3...">
             </div>
 
             <button type="button" class="button mt-5 btn-color is-rounded ml-5" id="btn-submit-job">Submit</button>
         </form>
-        
+
     </section>
 
     <!--VISTA DETALLES-->
@@ -130,13 +143,21 @@
         </div>
     </section>
 
+    <!--FOOTER-->
+    <footer class="is-flex is-center">
+        <p class="signature">
+            Hecho con <span>&#128151;</span> por Maca Iglesias Ghys.
+        </p>
+    </footer>
+
     <!-- SPINNER -->
     <div class="is-flex is-center view" id="spinner">
         <span class="loader m-5"></span>
     </div>
-    
+
     <!-- JS -->
     <script src="./js/api.js"></script>
     <script src="./js/main.js"></script>
 </body>
+
 </html>

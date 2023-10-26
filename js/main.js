@@ -6,7 +6,7 @@ $('#img-select').addEventListener('input', (e)=>changeBackground(e))
 $('#category-select').addEventListener('input', ()=> filterCategories())
 $('#seniority-select').addEventListener('input', ()=> filterSeniorities())
 $('#location-select').addEventListener('input', ()=> filterLocation())
-$("#btb-clean").addEventListener('click', ()=>cleanSelect())
+$("#btb-clear").addEventListener('click', ()=>clearSelect())
 
 //*****             Navbar burger
 document.addEventListener('DOMContentLoaded', () => {
@@ -279,7 +279,7 @@ const loadSelect = (select, params) =>{
     })
 }
 
-const cleanSelect=()=>{
+const clearSelect=()=>{
     $('#category-select').value= " "
     $('#seniority-select').value= " " 
     $('#location-select').value= " "

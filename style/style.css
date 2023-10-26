@@ -109,6 +109,11 @@ textarea{
     color: #000000;
 }
 
+/*Footer*/
+footer{
+    height: 10vh;
+}
+
 /*Loader*/
 .loader {
     width: 100px;
