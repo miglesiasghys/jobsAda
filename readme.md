@@ -27,3 +27,6 @@ Endpoint habra solo uno y sera llamado /jobs en donde se haran peticiones GET, P
 * Si el usuario da click en "Edit", debera aparecer debajo del detalle un formulario con los datos del job ya precargados. Al enviar el fomulario se debe actualizar este job con las modificaciones hechas (metodo PUT).
 * Si el usuario da click en "Delete", debe desaparecer el detalle y en su lugar aparecer un componente de alerta preguntando si estas seguro de realizar esta accion, en conjunto con el respectivo boton de "Delete" que efectiviza la solicitud (metodo DELETE) y el de "Cancel" que devolvera al usuario a la pagina principal.
 * Se les da la posibilidad de agregar datos adicionales al objeto job, pero como MINIMO debe contener la estructura propuesta y seran 20 objetos de minima.
+
+# URL deployada
+**https://miglesiasghys.github.io/jobsAda/**

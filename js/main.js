@@ -82,10 +82,11 @@ const showDetails = ({ name, image, description, seniority, category, salary, lo
             <span class="tag mx-2">${category}</span>
             <span class="tag mx-2">$ ${salary}</span>
         </div>
-        <button onclick= getJobsInfo(${id}) type="button" class="button is-rounded btn-details" id="btn-edit-job">Edit job</button>
-        <button onclick= openModal() type="button is-rounded btn-color" class="button  is-rounded btn-details" id="btn-delete-job">Delete job</button>
-        <button type="button" class="button is-rounded btn-color" onclick= showView("list-jobs")>Back...</button>
-    </div>
+        <div class="is-flex is-mobile container-btn-details">
+            <button onclick= getJobsInfo(${id}) type="button" class="button is-rounded btn-details m-1" id="btn-edit-job">Edit job</button>
+            <button onclick= openModal() type="button is-rounded btn-color" class="button m-1 is-rounded btn-details" id="btn-delete-job">Delete job</button>
+            <button type="button" class="button is-rounded btn-color m-1" onclick= showView("list-jobs")>Back...</button>
+        </div>
     </div>
     <div class="is-hidden" id="edit-job">
         <form class="form-create-job box columns is-multiline my-3" id="form-new-job">
