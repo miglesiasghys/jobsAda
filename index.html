@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ada Careers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;900&family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f00683b7b2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
     <!-- NAV BAR -->
     <header>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a class="navbar-item">
-                    <h1>Ada Careers</h1>
-                </a>
+        <nav class="navbar is-mobile" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand is-flex is-center pt-3">
+                <img class="image is-96x96 mx-5" src="https://static.vecteezy.com/system/resources/thumbnails/017/417/259/small/organic-blob-shape-gradient-free-png.png"/>
+                <h1 class="title title-app mt-5">Ada Careers</h1>
         
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>
@@ -24,11 +27,11 @@
             </div>
         
             <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-end">
-                    <button class="navbar-item button my-5 mx-4"type="button" id="btn-home">
+                <div class="navbar-end is-flex is-center">
+                    <button class="navbar-item button my-5 mx-4  btn-nav"type="button" id="btn-home">
                         Home
                     </button>
-                    <button class="navbar-item button my-5 mr-4" type="button" id="btn-create-job">
+                    <button class="navbar-item button my-5 mr-5 btn-nav" type="button" id="btn-create-job">
                         Create job
                     </button>
                 </div>
@@ -38,22 +41,20 @@
 
     <!-- VISTA LISTA DE TRABAJOS -->
     <main class="view" id="list-jobs">
-        <!--VISTA BUSCADOR-->
-        <section class="search-bar" id="search-bar">
-            <form class="is-flex is-flex-wrap-wrap is-center">
-                <select class="location-select">
+        <!--BUSCADOR-->
+        <section id="search-bar">
+            <form class="is-flex is-flex-wrap-wrap is-center is-mobile m-1 search-bar">
+                <label><i class="fa-solid fa-magnifying-glass"></i></label>
+                <select class="location-select input is-rounded search-select" id="location-select">
+                    <option value="" disabled selected>Location...</option>
                 </select>
-                <select id="seniority-select">
+                <select id="seniority-select" class="seniority-select input is-rounded search-select">
                     <option value="" disabled selected>Seniority...</option>
-                    <option value="Junior">Junior</option>
-                    <option value="Semisenior">Semisenior</option>
-                    <option value="Senior">Senior</option>
                 </select>
-                <select>
+                <select class="category-select input is-rounded search-select" id="category-select">
                     <option value="" disabled selected>Category...</option>
                 </select>
-                <button type="button" class="button" id="btn-search">Search</button>
-                <button type="button" class="button">Clear</button>
+                <button type="button" class="button is-rounded mx-5 btn-color" id="btb-clean">Clean</button>
             </form>
         </section>
         <div class="container is-flex is-flex-wrap-wrap is-center" id="container-cards"></div>
@@ -61,20 +62,19 @@
 
     <!-- VISTA CREAR TRABAJO -->
     <section class="view container" id="create-job">
-        <form class="form-create-job box columns is-multiline" id="form-new-job">
-            <div class="column is-8 mt-5">
+        <form class="form-create-job box columns is-multiline my-3" id="form-new-job">
+            <div class="column is-8 my-3">
                 <label for="job-title">Job title:</label>
                 <input id="name-job" type="text" class="input is-rounded my-3" placeholder="Job title...">
                 <label for="image">Image:</label>
                 <select id="img-select" class="input is-rounded my-3">
-                    <option value="" disabled selected>Image...</option>
+                    <option value="" disabled selected>Select a image...</option>
                     <option value="https://i.pinimg.com/564x/f5/bf/af/f5bfaf73b060f82f840f495b5cacad6c.jpg">Option 1</option>
                     <option value="https://i.pinimg.com/564x/68/56/aa/6856aadae3e4aed340f34224ae00a60b.jpg">Option 2</option>
                     <option value="https://i.pinimg.com/564x/80/41/fa/8041fa1695cf9c53a3be90f2688957b1.jpg">Option 3</option>
                     <option value="https://i.pinimg.com/564x/ca/70/15/ca70158ed58ce9085e1cbd54c73bd0e4.jpg">Option 4</option>
                     <option value="https://i.pinimg.com/564x/d0/83/b4/d083b498830cfac3f5e5dbf7b7831da3.jpg">Option 5</option>
                 </select>
-                </br>
                 <label for="description">Description:</label>
                 <textarea id="description-job" type="text" class="input my-3" placeholder="Description..."></textarea>
             </div>
@@ -82,43 +82,51 @@
                 <figure id="preview" class="figure-preview image">
                 </figure>
             </div>
+            <div class="column is-6">
+                <label for="tags" class="mt-3">Tags:</label>
+                <input id="location-job" type="text" class="input is-rounded mt-3" placeholder="Location...">
+                <select id="seniority-job" class="input is-rounded mt-3">
+                    <option value=" " disabled selected>Seniority...</option>
+                    <option value="Junior">Junior</option>
+                    <option value="Semienior">Semisenior</option>
+                    <option value="Senior">Senior</option>
+                </select>
+                <input id="category-job" type="text" class="input is-rounded my-3" placeholder="Category...">
+                <label for="salary">Salary:</label>
+                <input id="salary-job" type="number" class="input is-rounded mt-3" placeholder="Salary...">
+            </div>
+
+            <div class="column is-6">
+                <label for="benefits" class="mt-3">Benefits:</label>
+                <input id="vacation-job" type="text" class="input is-rounded mt-3" placeholder="Vacations...">
+                <input id="health-job" type="text" class="input is-rounded mt-3" placeholder="Health job...">
+                <select id="internet-job" type="text" class="input is-rounded my-3">
+                    <option value=" " disabled selected>Internet...</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+                <label for="long-term">Long term?:</label>
+                <select id="longterm-job" class="input is-rounded mt-3">
+                    <option value="" disabled selected>Select...</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
             
-            <label for="tags">Tags</label>
-            <input id="location-job" type="text" class="input is-rounded" placeholder="Location">
-            <input id="seniority-job" type="text" class="input is-rounded" placeholder="Seniority">
-            <input id="category-job" type="text" class="input is-rounded" placeholder="Category">
-            
-            <label for="benefits">Benefits:</label>
-            <input id="vacation-job" type="text" class="input is-rounded" placeholder="Vacation...">
-            <input id="health-job" type="text" class="input is-rounded" placeholder="Health job...">
-            <input id="internet-job" type="text" class="input is-rounded" placeholder="Internet...">
+            <div class="column is-12">
+                <label for="languages" class="mt-3">Languages:</label>
+                <input id="languages-job" type="text" class="input is-rounded mt-3" placeholder="Exaple: React, HTML5, CSS3...">
+            </div>
 
-            <label for="salary">Salary:</label>
-            <input id="salary-job" type="number" class="input is-rounded">
-
-            <label for="long-term">Long term?:</label>
-            <select id="longterm-job" class="input is-rounded">
-                <option value="" disabled selected>Select...</option>
-                <option value="true">True</option>
-                <option value="false">False</option>
-            </select>
-
-            <label for="languages">Languages:</label>
-            <input id="languages-job" type="text" class="input is-rounded" placeholder="Languages...">
-
-            <button type="button" class="button mt-5" id="btn-submit-job">Submit</button>
+            <button type="button" class="button mt-5 btn-color is-rounded ml-5" id="btn-submit-job">Submit</button>
         </form>
         
     </section>
 
     <!--VISTA DETALLES-->
-    <section class="container view" id="container-details">
-        <div class="columns m-5" id="container-card-details">
+    <section class="container view is-multiline is-mobile" id="container-details">
+        <div class="m-5" id="container-card-details">
         </div>
-    </section>
-    <!-- VISTA EDITAR TRABAJO -->
-    <section class="view" id="edit-job">
-        editar
     </section>
 
     <!-- SPINNER -->

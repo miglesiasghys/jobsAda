@@ -1,27 +1,81 @@
+body{
+    font-family: 'Poppins', sans-serif;
+}
 .is-center{
     justify-content: center;
     align-items: center;
+    align-content: center;
 }
+
+/*NAV*/
+.navbar{
+    min-height: 30vh;
+    background-image: linear-gradient(to right, #f19ac0, #fa85ab, #ff6f91, #ff5972, #ff444f, #f74f39, #eb5a23, #de6500, #cc7c01, #bb8e1d, #ab9c39, #9fa756);
+}
+
+.btn-nav{
+    color: white;
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.title-app{
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.navbar-burger{
+    color: white;
+}
+
+/*VISTA JOBS*/
+.search-select{
+    margin: 10px 0px 10px 10px;
+    width: 25vh;
+}
+
 .card-job{
     width: 35vh;
-    min-height: 65vh;
+    min-height: 84vh;
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-.navbar{
-    min-height: 12vh;
-    background-color: #f19ac0;
+.btn-color{
+    background-color: #9fa756;
+    color: white;
+    border: 1px solid white;
 }
 
+.btn-color:hover{
+    background-color:#f74f39;
+    color: white;
+    border: 1px solid transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.btn-details{
+    background-color: transparent;
+    color: #f74f39;
+    border: 1px solid #f74f39;
+}
+
+.btn-details:hover{
+    background-image:linear-gradient(to right, #f19ac0, #fa85ab, #ff6f91, #ff5972, #ff444f, #f74f39, #eb5a23, #de6500, #cc7c01, #bb8e1d, #ab9c39, #9fa756);
+    color: white;
+    border: 1px solid transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/*Forms*/
 textarea{
     min-height: 200px;
     border-radius: 10px;
 }
 
-.image-details{
-    width: 250px;
-    margin: auto;
-}
 .figure-preview{
     margin: auto;
     margin-top: 30px;
@@ -31,8 +85,28 @@ textarea{
     background-position: center;
     background-size: cover;
 }
-/**/
 
+/*Detalle*/
+.image-details{
+    width: 250px;
+    margin: auto;
+}
+
+.modal-background{
+    background-color: rgba(255, 255, 255, 0.636);
+}
+.modal-content{
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.modal-text{
+    font-size: 20px;
+    color: #000000;
+}
+
+/*Loader*/
 .loader {
     width: 100px;
     height: 38px;
@@ -54,5 +128,27 @@ textarea{
 
     100% {
         background-position: 32px 0px, 48px 16px;
+    }
+}
+
+/**/
+
+@media (max-width: 1023px){
+    .navbar{
+        height: auto;
+        margin: auto;
+        padding-top: 20px;
+    }
+    .navbar-menu{
+        display: none;
+        width: 100%;
+        background-image: linear-gradient(to right, #f19ac0, #fa85ab, #ff6f91, #ff5972, #ff444f, #f74f39, #eb5a23, #de6500, #cc7c01, #bb8e1d, #ab9c39, #9fa756);
+    }
+}
+
+@media (max-width: 700px){
+    .search-bar{
+        display: flex;
+        flex-direction: column;
     }
 }
