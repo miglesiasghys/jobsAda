@@ -37,8 +37,11 @@ body{
 
 .card-job{
     width: 35vh;
-    min-height: 84vh;
+    min-height: 80vh;
     margin: 10px;
+}
+
+.card-description{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -131,7 +134,7 @@ textarea{
     }
 }
 
-/**/
+/*Query*/
 
 @media (max-width: 1023px){
     .navbar{

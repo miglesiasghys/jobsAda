@@ -1,27 +1,32 @@
-//*****             Botones
-$("#btn-home").addEventListener('click', ()=> showView("list-jobs"))
-$('#btn-create-job').addEventListener('click', ()=> showView("create-job")) 
-$('#btn-submit-job').addEventListener('click', ()=> addJob())
+//*****             Botones y select
+$("#btn-home").addEventListener('click', () => showView("list-jobs"))
+$('#btn-create-job').addEventListener('click', () => showView("create-job"))
+$('#btn-submit-job').addEventListener('click', () => addJob())
+$('#img-select').addEventListener('input', (e)=>changeBackground(e))
+$('#category-select').addEventListener('input', ()=> filterCategories())
+$('#seniority-select').addEventListener('input', ()=> filterSeniorities())
+$('#location-select').addEventListener('input', ()=> filterLocation())
+$("#btb-clean").addEventListener('click', ()=>cleanSelect())
 
 //*****             Navbar burger
 document.addEventListener('DOMContentLoaded', () => {
     const navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-navbarBurgers.forEach( (element) => {
-    element.addEventListener('click', () => {
-        const target = element.dataset.target;
-        const $target = document.getElementById(target);
-        element.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
-    });
+    navbarBurgers.forEach((element) => {
+        element.addEventListener('click', () => {
+            const target = element.dataset.target;
+            const $target = document.getElementById(target);
+            element.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+        });
     });
 });
 
 //*****             Mostrar lista de trabajos 
-const postData=(data)=>{
-    $("#container-cards").innerHTML= "";
-    if (data){
-        for({id, name, image, description, seniority, category, salary} of data){
+const postData = (data) => {
+    $("#container-cards").innerHTML = "";
+    if (data) {
+        for ({ id, name, image, description, seniority, category} of data) {
             $("#container-cards").innerHTML += `
             <div class="card card-job">
                 <div class="card-image">
@@ -33,7 +38,7 @@ const postData=(data)=>{
                     <div class="media">
                         <div class="media-content">
                             <p class="title is-6 pb-2">${name}</p>
-                            <p class="subtitle is-6">${description.slice(0,100)}...</p>
+                            <p class="subtitle is-6">${description.slice(0, 100)}...</p>
                         </div>
                     </div>
                     <div class="content">
@@ -46,23 +51,23 @@ const postData=(data)=>{
                 </div>
             </div>`
         }
-    }else{
+    } else {
         alert(`No results found :( `)
     }
     showView("list-jobs")
 }
 
 //*****             Mostrar detalles
-const showDetails=({name, image, description, seniority, category, salary, location, benefits, id})=>{
+const showDetails = ({ name, image, description, seniority, category, salary, location, benefits, id }) => {
     showView("container-details")
-    $('#container-card-details').innerHTML= `
+    $('#container-card-details').innerHTML = `
     <div class= "columns ">
     <div class="column">
         <figure class="image-details">
             <img src="${image}" alt="${name}">
         </figure>
     </div>
-    <div class="column is-8">
+    <div class="column is-8 card-description">
         <h2 class= "title">${name}</h2>
         <p class="mb-3">${description}</p>
         <h3 class="m-2">Benefits:</h3>
@@ -83,74 +88,71 @@ const showDetails=({name, image, description, seniority, category, salary, locat
     </div>
     </div>
     <div class="is-hidden" id="edit-job">
-    <form class="form-create-job box columns is-multiline my-3" id="form-new-job">
-        <div class="column is-8 my-3">
-            <label for="job-title">Job title:</label>
-            <input id="name-job-edit" type="text" class="input is-rounded my-3" placeholder="Job title...">
-            <label for="image">Image:</label>
-            <select id="img-select-edit" class="input is-rounded my-3">
-                <option value="" disabled selected>Image...</option>
-                <option value="https://i.pinimg.com/564x/f5/bf/af/f5bfaf73b060f82f840f495b5cacad6c.jpg">Option 1</option>
-                <option value="https://i.pinimg.com/564x/68/56/aa/6856aadae3e4aed340f34224ae00a60b.jpg">Option 2</option>
-                <option value="https://i.pinimg.com/564x/80/41/fa/8041fa1695cf9c53a3be90f2688957b1.jpg">Option 3</option>
-                <option value="https://i.pinimg.com/564x/ca/70/15/ca70158ed58ce9085e1cbd54c73bd0e4.jpg">Option 4</option>
-                <option value="https://i.pinimg.com/564x/d0/83/b4/d083b498830cfac3f5e5dbf7b7831da3.jpg">Option 5</option>
-            </select>
-            <label for="description">Description:</label>
-            <textarea id="description-job-edit" type="text" class="input my-3" placeholder="Description..."></textarea>
+        <form class="form-create-job box columns is-multiline my-3" id="form-new-job">
+            <div class="column is-8 my-3">
+                <label for="job-title">Job title:</label>
+                <input id="name-job-edit" type="text" class="input is-rounded my-3" placeholder="Job title...">
+                <label for="image">Image:</label>
+                <select id="img-select-edit" class="input is-rounded my-3">
+                    <option value="" disabled selected>Image...</option>
+                    <option value="https://i.pinimg.com/564x/f5/bf/af/f5bfaf73b060f82f840f495b5cacad6c.jpg">Option 1</option>
+                    <option value="https://i.pinimg.com/564x/68/56/aa/6856aadae3e4aed340f34224ae00a60b.jpg">Option 2</option>
+                    <option value="https://i.pinimg.com/564x/80/41/fa/8041fa1695cf9c53a3be90f2688957b1.jpg">Option 3</option>
+                    <option value="https://i.pinimg.com/564x/ca/70/15/ca70158ed58ce9085e1cbd54c73bd0e4.jpg">Option 4</option>
+                    <option value="https://i.pinimg.com/564x/d0/83/b4/d083b498830cfac3f5e5dbf7b7831da3.jpg">Option 5</option>
+                </select>
+                <label for="description">Description:</label>
+                <textarea id="description-job-edit" type="text" class="input my-3" placeholder="Description..."></textarea>
+            </div>
+            <div class="column is-4">
+                <figure id="preview-edit" class="figure-preview image">
+                </figure>
+            </div>
+            <div class="column is-6">
+                <label for="tags" class="mt-3">Tags</label>
+                <input id="location-job-edit" type="text" class="input is-rounded mt-3" placeholder="Location...">
+                <select id="seniority-job-edit" class="input is-rounded mt-3">
+                    <option value=" " disabled selected>Seniority...</option>
+                    <option value="Junior">Junior</option>
+                    <option value="Semienior">Semisenior</option>
+                    <option value="Senior">Senior</option>
+                </select>
+                <input id="category-job-edit" type="text" class="input is-rounded my-3" placeholder="Category...">
+                <label for="salary">Salary:</label>
+                <input id="salary-job-edit" type="number" class="input is-rounded mt-3" placeholder="Salary...">
+            </div>
+            <div class="column is-6">
+                <label for="benefits" class="mt-3">Benefits:</label>
+                <input id="vacation-job-edit" type="text" class="input is-rounded mt-3" placeholder="Vacation...">
+                <input id="health-job-edit" type="text" class="input is-rounded mt-3" placeholder="Health job...">
+                <select id="internet-job-edit" type="text" class="input is-rounded my-3">
+                    <option value=" " disabled selected>Internet...</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+                <label for="long-term">Long term?:</label>
+                <select id="longterm-job-edit" class="input is-rounded mt-3">
+                    <option value="" disabled selected>Select...</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div class="column is-12">
+                <label for="languages" class="mt-3">Languages:</label>
+                <input id="languages-job-edit" type="text" class="input is-rounded mt-3" placeholder="Languages...">
+            </div>
+            <button onclick= editJob(${id}) type="button" class="button is-rounded mt-5 mx-5 btn-details" id="btn-edit-job">Edit</button>
+        </form>
+    </div>
+    <div class="modal" id="modal-delete">
+        <div class="modal-background"></div>
+        <div class="modal-content is-flex is-center">
+            <h2 class="modal-text m-3">Are you sure to delete this job?</h2>
+            <button onclick= closeModal() class="button btn-details is-rounded m-3" type="button">No</button>
+            <button onclick= deleteJob(${id}) class="button btn-details is-rounded m-3" type="button">Delete</button>
         </div>
-        <div class="column is-4">
-            <figure id="preview-edit" class="figure-preview image">
-            </figure>
-        </div>
-        <div class="column is-6">
-            <label for="tags" class="mt-3">Tags</label>
-            <input id="location-job-edit" type="text" class="input is-rounded mt-3" placeholder="Location...">
-            <select id="seniority-job-edit" class="input is-rounded mt-3">
-                <option value=" " disabled selected>Seniority...</option>
-                <option value="Junior">Junior</option>
-                <option value="Semienior">Semisenior</option>
-                <option value="Senior">Senior</option>
-            </select>
-            <input id="category-job-edit" type="text" class="input is-rounded my-3" placeholder="Category...">
-            <label for="salary">Salary:</label>
-            <input id="salary-job-edit" type="number" class="input is-rounded mt-3" placeholder="Salary...">
-        </div>
-
-        <div class="column is-6">
-            <label for="benefits" class="mt-3">Benefits:</label>
-            <input id="vacation-job-edit" type="text" class="input is-rounded mt-3" placeholder="Vacation...">
-            <input id="health-job-edit" type="text" class="input is-rounded mt-3" placeholder="Health job...">
-            <select id="internet-job-edit" type="text" class="input is-rounded my-3">
-                <option value=" " disabled selected>Internet...</option>
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
-            <label for="long-term">Long term?:</label>
-            <select id="longterm-job-edit" class="input is-rounded mt-3">
-                <option value="" disabled selected>Select...</option>
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
-        </div>
-        
-        <div class="column is-12">
-            <label for="languages" class="mt-3">Languages:</label>
-            <input id="languages-job-edit" type="text" class="input is-rounded mt-3" placeholder="Languages...">
-        </div>
-
-        <button onclick= editJob(${id}) type="button" class="button is-rounded mt-5 mx-5 btn-details" id="btn-edit-job">Edit</button>
-    </form>
-</div>
-<div class="modal" id="modal-delete">
-  <div class="modal-background"></div>
-  <div class="modal-content is-flex is-center">
-    <h2 class="modal-text m-3">Are you sure to delete this job?</h2>
-    <button onclick= closeModal() class="button btn-details is-rounded m-3" type="button">No</button>
-    <button onclick= deleteJob(${id}) class="button btn-details is-rounded m-3" type="button">Delete</button>
-  </div>
-  <button onclick= closeModal() class="modal-close is-large m-3" aria-label="close"></button>
-</div>`
+        <button onclick= closeModal() class="modal-close is-large m-3" aria-label="close"></button>
+    </div>`
 }
 
 //*****             Crear nuevo trabajo
@@ -177,33 +179,35 @@ const createNewJob = ()=>{
     return newJob
 }
 
-$('#img-select').addEventListener('input', (e)=>changeBackground(e))
+//*****              Cambiar fondo del preview de la imagen
 const changeBackground= (e) => {
     $("#preview").style.backgroundImage=`url('${e.target.value}')`
 }
 
-//*****             Editar trabajo
-const getInformarmation = ({name, image, description, location, category, seniority, benefits, salary, long_term, languages}) =>{
-            $("#name-job-edit").value = name
-            $("#img-select-edit").value = image
-            $("#description-job-edit").value= description
-            $("#location-job-edit").value = location
-            $("#category-job-edit").value= category
-            $("#seniority-job-edit").value = seniority
-            $("#vacation-job-edit").value = benefits.vacation
-            $("#health-job-edit").value= benefits.health_ensurance
-            $("#internet-job-edit").value= benefits.internet_paid
-            $("#salary-job-edit").value= salary
-            $("#longterm-job-edit").value = long_term
-            $("#languages-job-edit").value = languages
-            $("#preview-edit").style.backgroundImage=`url('${image}')`
-            $('#img-select-edit').addEventListener('input', (e)=>changeBackgroundEdit(e))
-            const changeBackgroundEdit= (e) => {
-            $("#preview-edit").style.backgroundImage=`url('${e.target.value}')`
-}
+//*****             Llenar los input del job a editar
+const getInformarmation = ({ name, image, description, location, category, seniority, benefits, salary, long_term, languages }) => {
+    $("#name-job-edit").value = name
+    $("#img-select-edit").value = image
+    $("#description-job-edit").value = description
+    $("#location-job-edit").value = location
+    $("#category-job-edit").value = category
+    $("#seniority-job-edit").value = seniority
+    $("#vacation-job-edit").value = benefits.vacation
+    $("#health-job-edit").value = benefits.health_ensurance
+    $("#internet-job-edit").value = benefits.internet_paid
+    $("#salary-job-edit").value = salary
+    $("#longterm-job-edit").value = long_term
+    $("#languages-job-edit").value = languages
+    $("#preview-edit").style.backgroundImage = `url('${image}')`
+    $('#img-select-edit').addEventListener('input', (e) => changeBackgroundEdit(e))
+    const changeBackgroundEdit = (e) => {
+        $("#preview-edit").style.backgroundImage = `url('${e.target.value}')`
     }
-const editJobInformation = ()=>{
-    let jobEdit= {
+}
+
+//*****             Editar trabajo
+const editJobInformation = () => {
+    let jobEdit = {
         name: $("#name-job-edit").value,
         image: $("#img-select-edit").value,
         description: $("#description-job-edit").value,
@@ -303,8 +307,3 @@ const filterCategories= ()=>{
     }
     getFilter(new URLSearchParams(params).toString())
 }
-
-$('#category-select').addEventListener('input', ()=> filterCategories())
-$('#seniority-select').addEventListener('input', ()=> filterSeniorities())
-$('#location-select').addEventListener('input', ()=> filterLocation())
-$("#btb-clean").addEventListener('click', ()=>cleanSelect())

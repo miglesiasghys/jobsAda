@@ -1,22 +1,23 @@
-//****Selectores universales
+//****              Selectores universales
 const $=(selector=> document.querySelector(selector))
 const $$=(selector=> document.querySelectorAll(selector))
 
-//*****Mostrar vistas
+//*****             Mostrar vistas
 const showView=(view)=>{
     $$(".view").forEach((view)=> view.classList.add("is-hidden"));
     $(`#${view}`).classList.remove("is-hidden")
 }
 
-//*****Obtener data de la Api
+//*****             Obtener data de la Api
 const getData= async()=>{
     showView("spinner")
     let response= await fetch("https://6533f91ee1b6f4c5904670c5.mockapi.io/api/jobs")
     let data= await response.json()
+
     setTimeout(()=>{initialization(data)}, 2000)
 }
 
-//*****Funciones que inicializan la web
+//*****             Funciones que inicializan la web
 const initialization=(data)=>{
     postData(data)
     getCountries(data)
@@ -24,32 +25,34 @@ const initialization=(data)=>{
     getSeniority(data)
 }
 
-//*****Filtrar por ID 
+//*****             Filtrar por ID 
 const getJobsById= async(id)=>{
     showView("spinner")
     let response= await fetch(`https://6533f91ee1b6f4c5904670c5.mockapi.io/api/jobs/${id}`) 
     let data= await response.json()
+
     setTimeout(()=>{showDetails(data)}, 2000)
 }
 
-//*****Traer informacion para editar 
+//*****             Traer informacion para editar 
 const getJobsInfo= async(id)=>{
     $("#edit-job").classList.remove('is-hidden')
     let response= await fetch(`https://6533f91ee1b6f4c5904670c5.mockapi.io/api/jobs/${id}`) 
     let data= await response.json()
+    
     getInformarmation(data)
 }
 
-//Filtro por parametros
+//              Filtro por parametros
 const getFilter = async (params)=>{
     showView("spinner")
     let response= await fetch(`https://6533f91ee1b6f4c5904670c5.mockapi.io/api/jobs?${params}`)
     let data= await response.json()
-    console.log(data)
+
     postData(data)
 }
 
-//*****Agregar trabajo nuevo
+//*****             Agregar trabajo nuevo
 const addJob= async()=>{
     let response= await fetch("https://6533f91ee1b6f4c5904670c5.mockapi.io/api/jobs", {
         method: 'POST',
@@ -65,6 +68,7 @@ const addJob= async()=>{
 
 }
 
+//*****             Editar trabajo
 const editJob= async(id)=>{
     let response= await fetch(`https://6533f91ee1b6f4c5904670c5.mockapi.io/api/jobs/${id}`, {
         method: 'PUT',
@@ -72,18 +76,19 @@ const editJob= async(id)=>{
         body: JSON.stringify(editJobInformation())
     })
     const data= await response.json()
-    
+
     editJobInformation(data)
     getData()
 }
 
-//delete job
-const deleteJob=(id)=>{
-    fetch(`https://6533f91ee1b6f4c5904670c5.mockapi.io/api/jobs/${id}`, {
+//*****             Eliminar trabajo
+const deleteJob= async (id)=>{
+    let response = await fetch(`https://6533f91ee1b6f4c5904670c5.mockapi.io/api/jobs/${id}`, {
         method: 'DELETE',
     })
+    const data = await response.json()
+
     getData()
-    showView("list-jobs")
 }
 
 window= getData()
