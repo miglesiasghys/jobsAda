@@ -98,12 +98,14 @@ textarea{
 .modal-background{
     background-color: rgba(255, 255, 255, 0.636);
 }
+
 .modal-content{
     background-color: white;
     padding: 30px 20px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
 .modal-text{
     font-size: 20px;
     color: #000000;
@@ -157,6 +159,16 @@ footer{
 @media (max-width: 700px){
     .search-bar{
         display: flex;
+        flex-direction: column;
+    }
+    .title-app{
+        font-size: 30px;
+    }
+    .figure-preview{
+        width: 200px;
+        height: 300px;
+    }
+    .modal-content{
         flex-direction: column;
     }
 }
